@@ -1,0 +1,136 @@
+<html>
+<head>
+    <title>Table Data Addition</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+<style>
+.body{
+    background: #ffffff;
+}
+</style>
+<script>
+var $table = $('#table');
+    var mydata = 
+[
+    {
+        "id":1,
+        "name": "alex",
+        "gender": "male",
+	 "phone":"1123456789",
+	 "address":"rrrrxyz",
+	 "action":"",
+    },
+    {
+        "id":2,
+        "name": "alexi",
+        "gender": "female",
+	  "phone":"1123456789",
+	"address": "aaaxyyz",
+	"action":"",
+    },
+    {
+         "id":3,
+        "name": "eve",
+        "gender": "female",
+	  "phone":"1123456789",
+	"address": "xyyyz",
+	"action":"",
+    },
+    { "id":4,
+        "name": "adem",
+        "gender":"male",
+	  "phone":"1123456789",
+	"address": "xyyyyz",
+	"action":"",
+    },
+   
+];
+
+$(function () {
+    $('#table').bootstrapTable({
+        data: mydata
+    });
+});
+
+ $(document).ready(function(){
+	
+    $( ".add-data" ).click(function() {
+            $(".container").hide();    
+            $(".d1").show();
+        });
+        
+	$(".submit").click(function(){
+        
+    var id=$("#id").val();
+    var name = $("#name").val();
+    var gender = $("#gender").val();
+	var phone = $("#phone").val();
+	var address = $("#address").val(); 
+  	var markup = "<tr><td>" + id + "</td><td>" + name + "</td><td>" + gender+ "</td><td>" + phone + "</td><td>" +address + "</td><td><span><button class='deleterow'><span class='glyphicon glyphicon-trash'></span></button></span><span><button class='editrow'><span class='glyphicon glyphicon-edit'></span></button></span></td></tr>";
+    $("#table").append(markup);
+     $(".container").show(); 
+	$(".d1").hide();
+	
+    });   
+});
+$(document).on('click',".editrow",function(){
+            $(".container").hide();
+            $(".d1").show();
+     
+});
+$(document).on('click',".save",function(){
+    alert(2);  
+    
+         $("#table").find("#id").append(markup1);
+          $(".container").show(); 
+});
+
+   $(document).on('click', '.deleterow', function () {
+        if(confirm("do u want to delete?")==true)
+            {
+                $(this).parents('tr').remove();
+                              
+            }else{
+                return false;
+            }
+    });
+	                   
+</script>
+</head>
+<body class="body">
+<input type="button" class="add-data" value="ADD-DATA">
+ 
+ <div class="container">    
+        <table id="table">
+        <thead>
+            <tr>
+                <th data-field="id" id="id">ID</th>
+                <th data-field="name" id="name" >NAME</th>
+                <th data-field="gender" id="gender">GENDER</th>
+                <th data-field="phone" id="phone">PHONE</th>
+                <th data-field="address" id="address">ADDRESS</th>
+                <th data-field="action" id="action">ACTION</th>
+              
+            </tr>
+        </thead>
+    </table>
+ </div>  
+
+<div class="d1">
+<form id="f1" class="form">
+    <input type="text" class="tbody tr" id="id" placeholder="Id"><br>
+ 	<input type="text" class="tbody tr" id="name" placeholder="Name"><br>
+    <input type="text" class="tbody tr" id="gender" placeholder="gender"><br>
+   	<input type="text" class="tbody tr" id="phone" placeholder="phone"><br>
+    <input type="text" class="tbody tr" id="address" placeholder=" Address"><br>
+<input type="button" class="submit"  value="submit">
+</form>
+
+</div>
+ <input type="button" class="save"  value="save">
+</body>
+</html>
