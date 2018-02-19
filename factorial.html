@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>
+factorial
+</title>
+<link href="style.css" type="text/css" rel="stylesheet">
+<script>
+
+function submit()
+{ 
+ 
+ var n,i,fact=1;
+ n=document.getElementById("t1").value;
+if(n>0){
+for(i=1;i<=n;i++)
+{
+  fact=fact*i;
+}
+document.getElementById("t2").value=fact;
+}
+else{
+alert("enter number only");
+}
+ 
+}
+function reset()
+{
+document.getElementById("t1").value=""
+document.getElementById("t2").value="";
+}
+
+</script>
+</head>
+<body>
+<p>enter num:</p>
+<br>
+<input type="text" id="t1">
+<br>
+<button id="b1" onclick="submit()">submit</button>
+<br>
+<input type="text" id="t2">
+<br>
+<button id="b2" onclick="reset()">reset</button>
+
+</body>
+</html>
