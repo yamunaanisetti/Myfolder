@@ -1,0 +1,129 @@
+ <html><head>
+    <title>Table Data Addition</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+   
+<script>
+var $table = $('#table');
+
+    var mydata = 
+[
+    {
+        
+        "name": "alex",
+        "gender": "male",
+	 "phone":"1123456789",
+	 "address":"rrrrxyz",
+	 "action":"",
+    },
+    {
+        
+        "name": "alexi",
+        "gender": "female",
+	  "phone":"1123456789",
+	"address": "aaaxyyz",
+	"action":"",
+    },
+    {
+         
+        "name": "eve",
+        "gender": "female",
+	  "phone":"1123456789",
+	"address": "xyyyz",
+	"action":"",
+    },
+    { 
+        "name": "adem",
+        "gender":"male",
+	  "phone":"1123456789",
+	"address": "xyyyyz",
+	"action":"",
+    },
+   
+];
+
+$(function () {
+    $('#table').bootstrapTable({
+        data: mydata
+    });
+});
+	
+ 
+  $(document).ready(function(){
+	
+       $( ".add-data" ).click(function() {
+   $(".container").hide();    
+      
+}),
+        
+	$(".submit").click(function(){
+        var name = $("#name").val();
+   
+        var gender = $("#gender").val();
+	var phone = $("#phone").val();
+	var address = $("#address").val(); 
+  	var markup = "<tr><td>" + name + "</td><td>" + gender+ "</td><td>" + phone + "</td><td>" +address + "</td><td><span class='deleterow'><a href='' class='glyphicon glyphicon-trash'></a>delete</span></td></tr>";
+            $("#table").append(markup);
+	$(".container").show();
+	$("#d1").hide();
+	
+        }),   
+
+
+  $(document).on('click', 'span.deleterow', function () {
+   
+			if(confirm("do u want to delete?")==true)
+				{
+                                $(this).parents('tr').remove();
+                              
+ 				}else{
+ 				return false;
+					}
+                       });
+  	
+});
+
+	                   
+</script>
+</head>
+<body>
+  
+<input type="button" class="add-data" value="ADD-DATA">
+<form role="form">
+<div class="form-group">
+<div class="container" >  
+      <h3>STATIC TABLE FROM JSON COLLECTION</h3>  
+        <table id="table" class="table table-hover"  style="background-color:lavender";>
+        <thead>
+            <tr>
+                <th data-field="name" id="name"  class="success">NAME</th>
+                <th data-field="gender" id="gender"  class="danger">GENDER</th>
+                <th data-field="phone" id="phone"  class="active">PHONE</th>
+	            <th data-field="address" id="address"  class="info">ADDRESS</th>
+                <th data-field="action" id="action"  class="warning">
+                    <button class="btn btn-active">ACTION</BUTTON></th>
+            </tr>
+        </thead>
+    </table>
+ </div>  
+
+</div>   
+</form>
+
+<form  id="d1">
+ 
+ 	<input type="text" class="tbody tr" id="name" placeholder="Name"><br>
+        <input type="text" class="tbody tr" id="gender" placeholder="gender"><br>
+   	<input type="text" class="tbody tr" id="phone" placeholder="phone"><br>
+        <input type="text" class="tbody tr" id="address" placeholder=" Address"><br>  
+    
+<input type="button" class="submit" value="submit">
+<input type="button" class="delete" value="delete">
+</form>
+
+</body>
+</html>
